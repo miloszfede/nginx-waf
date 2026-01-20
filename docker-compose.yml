@@ -1,11 +1,11 @@
 services:
   nginx-waf:
-    image: owasp/modsecurity-crs 
+    build: .
+    image: owasp/modsecurity-crs
     container_name: nginx-waf
     ports:
       - "80:80"
     volumes:
       - ./modsecurity.conf:/etc/nginx/modsecurity.d/modsecurity.conf
       - ./crs-setup.conf:/etc/nginx/modsecurity.d/crs-setup.conf
-    command: >
-      sh -c "mkdir -p /var/log/modsecurity && nginx -g 'daemon off;'"
+
